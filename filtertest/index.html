@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <img id="image" crossOrigin="anonymous" src="t.jpg" width="800">
+    <script src="glfx.js"></script>
+    <script>
+      var canvas = fx.canvas();
+
+      // convert the image to a texture
+      var image = document.getElementById('image');
+      var texture = canvas.texture(image);
+
+      // apply the perspective filter
+      canvas.draw(texture).hueSaturation(-0.96, 0.36).sepia(0.1).update();
+
+      image.src = canvas.toDataURL('image/png');
+
+      // or even if you replace the image with the canvas
+      // image.parentNode.insertBefore(canvas, image);
+      // image.parentNode.removeChild(image);
+    </script>
+  </body>
+</html>
